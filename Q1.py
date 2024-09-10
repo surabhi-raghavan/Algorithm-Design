@@ -8,6 +8,9 @@ Variables
     start: 
     subset: 
     i: 
+    inputString:
+    input:
+    
 
 Function subsetOfThree(input, start, subset):
     If Length of subset == 3
@@ -31,4 +34,24 @@ def subsetOfThree(input, start, subset):
         return
     
     for i in range (start, n):
+        subsetOfThree(input, i+1, subset+input[i])
+
+def main():
+    inputString =input("Enter the elements of the list")
+    
+    try:
+        input= list(map(int, inputString.split(',')))
+    except ValueError:
+        print('Invalid Input')
+        return
+    
+    if n>=3:
+        subsetOfThree(input, 0, [])
+    else:
+        print('Not enough elements')
+
+if __name__== "__main__":
+    main()
+        
+    
         
