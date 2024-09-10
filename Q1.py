@@ -53,11 +53,11 @@ def subsetOfThree(ip, start, subset):
         subsetOfThree(ip, i+1, subset+[ip[i]])
 
 def main():
-    inputString =input("Enter the elements of the list")
+    inputString =input("Enter the elements of the list\n")
     
     try:
         # Convert the input to a list of integers
-        ip= list(map(int, inputString.split()))
+        ip= list(map(int, inputString.split(',')))
         
     except ValueError:
         
