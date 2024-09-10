@@ -24,14 +24,30 @@ Function subsetOfThree(input, start, subset):
 """
 
 def subsetOfThree(input, start, subset):
-    n=len(input)
+    
+    """
+    - input: list of elements to choose sets of 3 subsets from
+    
+    - start: index from which we start considering elements
+    
+    - subset: the subset being constructed
+    
+    """
+    n=len(input) 
     subset_length= len(subset)
     
-    if subset_length == 3:
-        print(tuple(subset))
+    # if there is a subset of exactly 3 elemets, print it 
+    
+    if subset_length == 3: 
+        print(tuple(subset)) # Convert the list to a tuple
         return
+    
+    # if  we don't have enough elements left to pick from 
+    
     if start >= n:
         return
+    
+    # Loop through the remaining elements 
     
     for i in range (start, n):
         subsetOfThree(input, i+1, subset+input[i])
@@ -40,13 +56,17 @@ def main():
     inputString =input("Enter the elements of the list")
     
     try:
+        # Convert the input to a list of integers
         input= list(map(int, inputString.split(',')))
+        
     except ValueError:
+        
         print('Invalid Input')
         return
     
     n= len(input)
     
+    # Check if the list has atleast 3 elements 
     if n>=3:
         subsetOfThree(input, 0, [])
     else:
