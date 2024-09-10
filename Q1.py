@@ -45,6 +45,8 @@ def main():
         print('Invalid Input')
         return
     
+    n= len(input)
+    
     if n>=3:
         subsetOfThree(input, 0, [])
     else:
