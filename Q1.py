@@ -4,7 +4,10 @@ Input: A list of integers
 Output: All subsets of 3 elements
 Variables
     n: length of list
-    
+    subset_length: length of the subset being created 
+    start: 
+    subset: 
+    i: 
 
 Function subsetOfThree(input, start, subset):
     If Length of subset == 3
@@ -23,3 +26,9 @@ def subsetOfThree(input, start, subset):
     
     if subset_length == 3:
         print(tuple(subset))
+        return
+    if start >= n:
+        return
+    
+    for i in range (start, n):
+        
