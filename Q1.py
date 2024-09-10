@@ -2,7 +2,7 @@
 PSEUDOCODE: 
 Input: A list of integers 
 Output: All subsets of 3 elements
-Variables
+Variables:
     n (int): length of list
     subset_length (int): length of the subset being created 
     start (int): index from which we start considering elements
@@ -23,7 +23,7 @@ Function subsetOfThree(input, start, subset):
     
 """
 
-def subsetOfThree(ip, start, subset):
+def subsetOfThree(ip, start, subset, unique_subsets):
     
     """
     - ip: list of elements to choose sets of 3 subsets from
@@ -39,7 +39,7 @@ def subsetOfThree(ip, start, subset):
     # if there is a subset of exactly 3 elemets, print it 
     
     if subset_length == 3: 
-        print(tuple(subset)) # Convert the list to a tuple
+        unique_subsets.add(tuple(sorted(subset)))
         return
     
     # if  we don't have enough elements left to pick from 
@@ -50,7 +50,7 @@ def subsetOfThree(ip, start, subset):
     # Loop through the remaining elements 
     
     for i in range (start, n):
-        subsetOfThree(ip, i+1, subset+[ip[i]])
+        subsetOfThree(ip, i+1, subset+[ip[i]], unique_subsets)
 
 def main():
     inputString =input("Enter the elements of the list\n")
@@ -68,7 +68,10 @@ def main():
     
     # Check if the list has atleast 3 elements 
     if n>=3:
-        subsetOfThree(ip, 0, [])
+        unique_subsets= set()
+        subsetOfThree(ip, 0, [], unique_subsets)
+        for subset in unique_subsets:
+            print(subset)
     else:
         print('Not enough elements')
 
