@@ -3,13 +3,13 @@ PSEUDOCODE:
 Input: A list of integers 
 Output: All subsets of 3 elements
 Variables
-    n: length of list
-    subset_length: length of the subset being created 
-    start: 
-    subset: 
-    i: 
-    inputString:
-    ip:
+    n (int): length of list
+    subset_length (int): length of the subset being created 
+    start (int): index from which we start considering elements
+    subset (list): the subset being constructed
+    i (int): loop viariable
+    inputString (String): Input variable 
+    ip (list): convert string to list integer
     
 
 Function subsetOfThree(input, start, subset):
