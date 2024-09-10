@@ -10,6 +10,7 @@ Variables:
     i (int): loop viariable
     inputString (String): Input variable 
     ip (list): convert string to list integer
+    unique_subsets (set): to store only unique subsets
     
 
 Function subsetOfThree(input, start, subset):
