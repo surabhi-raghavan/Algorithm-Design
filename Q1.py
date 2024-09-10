@@ -16,3 +16,10 @@ Function subsetOfThree(input, start, subset):
         Call subsetOfThree(input, i+1, subset+ [input[i]])
     
 """
+
+def subsetOfThree(input, start, subset):
+    n=len(input)
+    subset_length= len(subset)
+    
+    if subset_length == 3:
+        print(tuple(subset))
