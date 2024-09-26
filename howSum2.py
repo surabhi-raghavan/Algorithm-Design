@@ -14,4 +14,9 @@ def howSumTab(targetSum, numbers):
     
     return table[targetSum]
 
+if __name__ =="__main__":
+    targetSum = int(input("Enter the Target Sum: "))
+    numbers = list(map(int, input("Enter the numbers with a space: ").split()))
+    print(howSumTab(targetSum, numbers))
+
 
