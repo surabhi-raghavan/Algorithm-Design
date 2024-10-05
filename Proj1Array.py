@@ -34,4 +34,20 @@ def mergearray(A, m, n):
             i+=1
             k+=1
     else: 
-        aux = 
+        aux = A[m:m+n]
+        i = m-1
+        j= n-1
+        k = m+n-1
+        
+        while i>=0 and j>=0:
+            if A[i] > aux[j]:
+                A[k] = A[i]
+                i-=1
+            else:
+                A[k] = aux[j]
+                j-=1
+            k-=1
+            
+            while j>=0:
+                
+        
