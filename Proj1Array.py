@@ -6,52 +6,52 @@ and merges the two subarrays using an auxiliary array Aux of size min {m, n} bac
 """
 
 def mergearray(A, m, n):
+
     if m == 0:
         return A
     if n == 0:
         return A
-    
-    size = min(m,n)
-    aux = []
-    
-    if (m<=n): 
-        aux = A[:m]
-        i=0
-        k=0
-        j=m
-        
-        while i <m and j < m+n:
-            if aux[i] <= A[j]:
-                A[k] = aux[i]
-                i+=1
+    if m <= n:
+        Aux = A[:m]  
+        i = 0        
+        k = 0        
+        j = m        
+
+        while i < m and j < m + n:
+            if Aux[i] <= A[j]:
+                A[k] = Aux[i]
+                i += 1
             else:
                 A[k] = A[j]
-                j+=1
-            k+=1 
-        
+                j += 1
+            k += 1
+
         while i < m:
-            A[k] =aux[i]
-            i+=1
-            k+=1
-    else: 
-        aux = A[m:m+n]
-        i = m-1
-        j= n-1
-        k = m+n-1
-        
-        while i>=0 and j>=0:
-            if A[i] > aux[j]:
+            A[k] = Aux[i]
+            i += 1
+            k += 1
+    else:
+        Aux = A[m:m+n]  
+        i = m - 1       
+        j = n - 1       
+        k = m + n - 1   
+
+        while i >= 0 and j >= 0:
+            if A[i] > Aux[j]:
                 A[k] = A[i]
-                i-=1
+                i -= 1
             else:
-                A[k] = aux[j]
-                j-=1
-            k-=1
-            
-            while j>=0:
-                A[k] =aux[j]
-                j-=1
-                k-=1
+                A[k] = Aux[j]
+                j -= 1
+            k -= 1
+
+        while j >= 0:
+            A[k] = Aux[j]
+            j -= 1
+            k -= 1
+
+        # Remaining elements from the first subarray are already in place
+
     return A
         
 def main():
@@ -72,13 +72,12 @@ def main():
 
     # Combine the two subarrays into array A
     A = first + second
-    print(f"\nCombined Array A before merging: {A}")
 
     # Merge the subarrays
     merged_A = mergearray(A, m, n)
 
     # Display the merged array
-    print("\n=== Merged Sorted Array ===")
+    print("\nMerged Sorted Array")
     print(merged_A)
 
 if __name__ == "__main__":
