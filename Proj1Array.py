@@ -49,5 +49,37 @@ def mergearray(A, m, n):
             k-=1
             
             while j>=0:
-                
+                A[k] =aux[j]
+                j-=1
+                k-=1
+    return A
         
+def main():
+    first_input = input("Enter elements of the first sorted subarray (space-separated): ").strip()
+    if first_input:
+        first = list(map(int, first_input.split()))
+    else:
+        first = []
+    m = len(first)
+
+    # Input for the second sorted subarray
+    second_input = input("Enter elements of the second sorted subarray (space-separated): ").strip()
+    if second_input:
+        second = list(map(int, second_input.split()))
+    else:
+        second = []
+    n = len(second)
+
+    # Combine the two subarrays into array A
+    A = first + second
+    print(f"\nCombined Array A before merging: {A}")
+
+    # Merge the subarrays
+    merged_A = mergearray(A, m, n)
+
+    # Display the merged array
+    print("\n=== Merged Sorted Array ===")
+    print(merged_A)
+
+if __name__ == "__main__":
+    main()
