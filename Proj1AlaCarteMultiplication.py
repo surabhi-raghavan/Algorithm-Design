@@ -1,4 +1,4 @@
-def ala_carte_multiplication(multiplicand, multiplier):
+def alacartemultiplication(multiplicand, multiplier):
     
     sign = -1 if (multiplicand < 0) ^ (multiplier < 0) else 1
     multiplicand, multiplier = abs(multiplicand), abs(multiplier)
@@ -24,4 +24,4 @@ def ala_carte_multiplication(multiplicand, multiplier):
     
     return result
 
-print(ala_carte_multiplication(-45952456856498465985 ,-98654651986546519856))
+print(alacartemultiplication(-45952456856498465985 ,-98654651986546519856))
