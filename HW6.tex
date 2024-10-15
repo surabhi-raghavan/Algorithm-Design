@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\geometry{margin=1in}
+
+% Header/Footer Configuration
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\yourname}
+\fancyhead[C]{Homework \#6}
+\fancyhead[R]{\coursecode}
+\fancyfoot[C]{\thepage}
+
+% Custom commands
+\newcommand{\yourname}{Surabhi Raghavan}  % Your name
+\newcommand{\hwnumber}{6}          % Homework number
+\newcommand{\coursecode}{INFSCI 2591}  % Course name/code
+
+% Begin document
+\begin{document}
+
+\title{Homework \#6}
+\author{\yourname}
+\date{\today}
+
+\maketitle
+
+\section*{Problem 4}
+% Problem description
+Write an algorithm that takes an integer n as input and determines the total
+number of solutions to the n-Queens problem.
+\subsection*{Solution}
+% Your solution goes here.
+The n-queens problem  involves placing n queens on a n x n chessboard such that no two queens threaten each other.
+\\
+Two queens do not threaten each other if:
+\begin{itemize}
+\item if 2 queens are in the same row
+\item if 2 queens are in the same column 
+\item if 2 queens are iin the same diagonal 
+\end{itemize}
+We need two separate functions- one to place the queen in a particular position and another to determine all combinations of the solutions.\\
+\\
+Alogrithm: Determine if a queen can  be placed at a particular position \\
+Input: k (int)- represents the kth queen \\
+Output: Returns 1 if the queen can be placed and 0 if it cannot\\
+
+\begin{algorithm}
+    \caption{Place($k, i$)}
+    \begin{algorithmic}[1]
+        \For{$j = 1$ to $k-1$}
+            \If{$x[j] = i$ \textbf{or} $|j - k| = |x[j] - i|$}
+                \State \Return 0
+            \EndIf
+        \EndFor
+        \State \Return 1
+    \end{algorithmic}
+    \end{algorithm}
+    
+
+Alogrithm: Function to determine the number of solutions to the n-queens problem\\
+Input: n (int)- represents the number of queens and the size of the chessboard \\
+Output: Number of solutions\\
+
+\begin{algorithm}
+    \caption{NQueens(n)}
+    \begin{algorithmic}[1]
+        \State $k \gets 1$
+        \State $x[k] \gets 0$
+        \State $solution\_count \gets 0$ \Comment{Initialize counter for number of solutions}
+        \While{$k > 0$}
+            \State $x[k] \gets x[k] + 1$
+            \While{$x[k] \leq n$ \textbf{and} not PLACE($k, x[k]$)}
+                \State $x[k] \gets x[k] + 1$
+            \EndWhile
+            \If{$x[k] \leq n$}
+                \If{$k == n$}
+                    \State $solution\_count \gets solution\_count + 1$ \Comment{Increment solution count}
+                \Else
+                    \State $k \gets k + 1$
+                    \State $x[k] \gets 0$
+                \EndIf
+            \Else
+                \State $k \gets k - 1$
+            \EndIf
+        \EndWhile
+        \State \Return $solution\_count$ \Comment{Return the total number of solutions found}
+    \end{algorithmic}
+    \end{algorithm}
+\section*{Problem 10}
+% Problem description
+Find at least two instances of the n-Queens problem that have no solutions.
+\subsection*{Solution}
+
+
+\section*{Problem }
+% Problem description
+State the problem here.
+
+\subsection*{Solution}
+% Your solution goes here.
+
+\end{document}
