@@ -41,7 +41,7 @@ number of solutions to the n-Queens problem.
 % Your solution goes here.
 The n-queens problem  involves placing n queens on a n x n chessboard such that no two queens threaten each other.
 \\
-Two queens do not threaten each other if:
+Two queens threaten each other if:
 \begin{itemize}
 \item if 2 queens are in the same row
 \item if 2 queens are in the same column 
@@ -238,4 +238,281 @@ Promising Function
         \State \textbf{Return:} $(weight + total \geq W)$ \textbf{and} $(weight + w[i+1] \leq W)$
     \end{algorithmic}
 \end{algorithm}
+\section*{Initial Setup}
+
+\begin{itemize}
+    \item \textbf{Target Sum (W):} 52
+    \item \textbf{Weights (w):} \{ 2, 10, 13, 17, 22, 42 \}
+    \item \textbf{Include Array:} Initially empty, i.e., \{ \}
+    \item \textbf{Current Weight (W):} Initially 0
+\end{itemize}
+
+The \textbf{Promising Function} checks two conditions:
+\begin{enumerate}
+    \item \( \text{curr\_sum} + \text{remaining\_weights} \geq W \) — Ensures that we can still reach the target sum with the remaining weights.
+    \item \( \text{curr\_sum} + \text{next\_weight} \leq W \) — Ensures that adding the next weight will not exceed the target sum.
+\end{enumerate}
+
+\section*{Step-by-Step Backtracking Process with Promising Function Explanation}
+
+\subsection*{Step 1:}
+\textbf{Action:} Promising function returns true, so we include weight 2. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2 \}
+    \item Current Weight (W): 2
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+2 + (10 + 13 + 17 + 22 + 42) = 106 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+2 + 10 = 12 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 2:}
+\textbf{Action:} Promising function returns true, so we include weight 10. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10 \}
+    \item Current Weight (W): 12
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+12 + (13 + 17 + 22 + 42) = 104 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+12 + 13 = 25 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 3:}
+\textbf{Action:} Promising function returns true, so we include weight 13. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 13 \}
+    \item Current Weight (W): 25
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+25 + (17 + 22 + 42) = 81 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+25 + 17 = 42 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 4:}
+\textbf{Action:} Promising function returns true, so we include weight 17. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 13, 17 \}
+    \item Current Weight (W): 42
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+42 + (22 + 42) = 64 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+42 + 22 = 64 > 52 \quad \text{(adding the next weight will exceed the target)}
+\]
+
+\subsection*{Step 5:}
+\textbf{Action:} Backtracking begins. Exclude the last included weight 17. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 13 \}
+    \item Current Weight (W): 25
+\end{itemize}
+\textbf{Explanation:} The promising function returns false for weight 17 since adding more exceeds 52. Backtrack and try the next weight.
+
+\subsection*{Step 6:}
+\textbf{Action:} Promising function returns true, so we include weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 13, 22 \}
+    \item Current Weight (W): 47
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+25 + (22 + 42) = 64 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+25 + 22 = 47 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 7:}
+\textbf{Action:} Backtracking occurs. Exclude the last included weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 13 \}
+    \item Current Weight (W): 25
+\end{itemize}
+\textbf{Explanation:} The promising function returns false for weight 22 because adding more weights will exceed 52. Backtrack and try other combinations.
+
+\subsection*{Step 8:}
+\textbf{Action:} Backtracking occurs. Exclude the last included weight 13. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10 \}
+    \item Current Weight (W): 12
+\end{itemize}
+\textbf{Explanation:} The promising function returns false for the subset \{ 2, 10, 13 \} since adding more exceeds 52. Backtrack to explore more possibilities.
+
+\subsection*{Step 9:}
+\textbf{Action:} Promising function returns true, so we include weight 17. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 17 \}
+    \item Current Weight (W): 29
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+12 + (17 + 22 + 42) = 106 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+29 + 22 = 51 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 10:}
+\textbf{Action:} Promising function returns true, so we include weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 17, 22 \}
+    \item Current Weight (W): 51
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+29 + (22 + 42) = 93 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+51 + 42 = 93 > 52 \quad \text{(adding the next weight will exceed the target)}
+\]
+
+\subsection*{Step 11:}
+\textbf{Action:} Backtracking occurs. Exclude the last included weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 10, 17 \}
+    \item Current Weight (W): 29
+\end{itemize}
+\textbf{Explanation:} The promising function returns false when attempting to include more weights beyond 51. Backtrack to explore further combinations.
+
+\subsection*{Step 12:}
+\textbf{Action:} Promising function returns true, so we include weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 22 \}
+    \item Current Weight (W): 24
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+2 + (22 + 42) = 66 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+24 + 42 = 66 > 52 \quad \text{(adding the next weight will exceed the target)}
+\]
+
+\subsection*{Step 13:}
+\textbf{Action:} Promising function returns true, so we include weight 42. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2, 42 \}
+    \item Current Weight (W): 44
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+24 + 42 = 66 > 52 \quad \text{(adding the next weight will exceed the target)}
+\]
+
+\subsection*{Step 14:}
+\textbf{Action:} Backtracking occurs. Exclude the last included weight 42. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 2 \}
+    \item Current Weight (W): 2
+\end{itemize}
+\textbf{Explanation:} The promising function returns false for \{ 2, 42 \} since it exceeds 52. Backtrack and try other combinations.
+
+\subsection*{Step 15:}
+\textbf{Action:} Promising function returns true, so we include weight 10. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 10 \}
+    \item Current Weight (W): 10
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+10 + (13 + 17 + 22 + 42) = 104 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+10 + 13 = 23 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 16:}
+\textbf{Action:} Promising function returns true, so we include weight 42. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 10, 42 \}
+    \item Current Weight (W): 52
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+10 + (42) = 52 \quad \text{(exactly equals the target sum)}
+\]
+
+\subsection*{Step 17:}
+\textbf{Action:} Backtracking occurs. Exclude weight 42. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 10 \}
+    \item Current Weight (W): 10
+\end{itemize}
+\textbf{Explanation:} The promising function returned true for the subset \{ 10, 42 \}, so now backtrack to explore further possibilities.
+
+\subsection*{Step 18:}
+\textbf{Action:} Promising function returns true, so we include weight 13. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 13 \}
+    \item Current Weight (W): 13
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+13 + (17 + 22 + 42) = 94 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+13 + 17 = 30 \leq 52 \quad \text{(adding the next weight won't exceed the target)}
+\]
+
+\subsection*{Step 19:}
+\textbf{Action:} Promising function returns true, so we include weight 17. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 13, 17 \}
+    \item Current Weight (W): 30
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+30 + (22 + 42) = 94 \geq 52 \quad \text{(we can still reach the target sum)}
+\]
+\[
+30 + 22 = 52 \quad \text{(adding the next weight exactly equals the target)}
+\]
+
+\subsection*{Step 20:}
+\textbf{Action:} Promising function returns true, so we include weight 22. \\
+\textbf{Current State:} 
+\begin{itemize}
+    \item Include array: \{ 13, 17, 22 \}
+    \item Current Weight (W): 52
+\end{itemize}
+\textbf{Explanation of Promising Function:}
+\[
+30 + (22) = 52 \quad \text{(exactly equals the target sum)}
+\]
+
+\section*{Conclusion}
+\begin{itemize}
+    \item \textbf{Solution 1:} \{ 10, 42 \}
+    \item \textbf{Solution 2:} \{ 13, 17, 22 \}
+\end{itemize}
 \end{document}
