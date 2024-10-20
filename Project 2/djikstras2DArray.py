@@ -88,7 +88,7 @@ def process_file(file_path, source_node, destination_node):
     total_time = end_time - start_time
     print(f"Total execution time: {total_time:.4f} seconds")
 
-    print(f"Shortest distance from node {source_node} to node {destination_node}: {distance[destination_node]}")
+    print(f"Shortest distance from node {source_node} to node {destination_node}: {distance[destination_node]} feet")
     print("Path: ", end='')
     print_path(previous, destination_node)
     print("\n")
