@@ -93,7 +93,7 @@ def process_file(file_path, source_node, destination_node):
     print(f"Memory used by linked list: {linked_list_memory / 1024:.2f} KB")
 
     start_time = time.time()
-    distance, previous = dijkstra(nodes, edges, source_node, num_nodes)
+    distance, previous = djikstra(nodes, edges, source_node, num_nodes)
     end_time = time.time()
 
     total_time = end_time - start_time
