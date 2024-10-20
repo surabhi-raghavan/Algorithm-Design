@@ -28,7 +28,7 @@ def readInput(file_path):
         max_node_id = max(max_node_id, node_id, connected_node_id)
     return edges, max_node_id + 1 
 
-def dijkstra(nodes, edges, source, num_nodes):
+def djikstra(nodes, edges, source, num_nodes):
     distance = [INF] * num_nodes
     previous = [-1] * num_nodes
     visited = [False] * num_nodes
