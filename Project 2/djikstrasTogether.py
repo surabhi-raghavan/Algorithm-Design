@@ -162,8 +162,8 @@ def main():
             ll_time, mx_time, ll_memory, mx_memory = process_file(file_path, src_node, dest_node)
             linked_list_times.append(ll_time)
             matrix_times.append(mx_time)
-            linked_list_memories.append(ll_memory / 1024)  
-            matrix_memories.append(mx_memory / 1024)  
+            linked_list_memories.append(ll_memory / 1024)  # Convert to KB
+            matrix_memories.append(mx_memory / 1024)  # Convert to KB
         else:
             print(f"File not found: {file_path}")
             linked_list_times.append(None)
@@ -174,15 +174,19 @@ def main():
     fig, ax1 = plt.subplots(figsize=(12, 6))
 
     ax1.set_xlabel("Input File Index")
-    ax1.set_ylabel("Time (seconds)", color='tab:blue')
-    ax1.plot(file_indices, linked_list_times, marker='o', label="Linked List Time", color='tab:blue')
-    ax1.plot(file_indices, matrix_times, marker='x', label="Matrix Time", color='tab:cyan')
-    ax1.tick_params(axis='y', labelcolor='tab:blue')
+    ax1.set_ylabel("Memory (KB)", color='tab:red')
+    ax1.plot(file_indices, linked_list_memories, marker='o', label="Linked List Memory", color='tab:red')
+    ax1.plot(file_indices, matrix_memories, marker='x', label="Matrix Memory", color='tab:orange')
+    ax1.tick_params(axis='y', labelcolor='tab:red')
 
-    plt.title("Djikstra's Algorithm - Time Comparison (Linked List vs Matrix)")
+    plt.title("Dijkstra's Algorithm - Memory Usage Comparison (Linked List vs Matrix)")
     fig.tight_layout()  
     ax1.legend(loc='upper left')
     plt.show()
+
+if __name__ == "__main__":
+    main()
+
 
 if __name__ == "__main__":
     main()

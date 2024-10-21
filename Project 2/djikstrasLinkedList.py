@@ -117,8 +117,8 @@ def main():
     djikstra_times = []
     file_indices = list(range(1, len(input_files) + 1))
 
-    src_node = 192  
-    dest_node = 163  
+    src_node = 465  
+    dest_node = 22  
 
     for file_path in input_files:
         if os.path.exists(file_path):
