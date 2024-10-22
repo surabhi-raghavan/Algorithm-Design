@@ -95,7 +95,7 @@ def process_file(file_path, source_node, destination_node):
 
 def main():
     input_files = [
-      'Project2_Input_File/Project2_Input_File12.csv' 
+      f'Project2_Input_File/Project2_Input_File{i}.csv' for i in range(1, 16)
     ]
     
     floyd_warshall_times = []

@@ -137,6 +137,6 @@ def main(input_files):
 
 if __name__ == "__main__":
     input_files = [
-        f'Project2_Input_File/Project2_Input_File{i}.csv' for i in range(1, 16)
+        'Project2_Input_File/Project2_Input_File13.csv' 
     ]
     main(input_files)
