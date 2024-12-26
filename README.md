@@ -11,6 +11,6 @@ This repository is a collection of assignments and projects from Pitt's Algorith
 The repository is organized into the following directories:
 
 - `HW1` to `HW8`: Homework assignments 1 through 8.
-- `Project 1` and `Project 2`: Major course projects.
+- `Project 1`, `Project 2`and `Project 3`: Major course projects.
 
 Each directory contains the relevant code and documentation for the assignment or project.
